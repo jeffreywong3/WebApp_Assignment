@@ -5,8 +5,17 @@
         <title> Banking App </title>
     </head>
 
-    <body style="background-color:powderblue;">
-        <h1 style="color:green; text-align:center; font-family:verdana;"> Banking App </h1>
+    <body style="background-color:powderblue; align-items: center;">
+        <h1 style="color:green;  text-align:center; font-family:verdana;"> Banking App </h1>
+        
+        <!-- 
+        Sources for center/image
+        Center Format: https://www.computerhope.com/issues/ch001613.htm
+        Image Video Link: https://m.youtube.com/watch?v=_w6N_nplmAw&feature=youtu.be
+        -->
+        <center><img id="imglogo" src="img/logo.png" alt="logo"></center>
+            
+
         <div id = "formContainer">
             <div id = "header"></div>
             <input type = "email" placeholder = "email" id = "email"/>
@@ -18,7 +27,7 @@
         </div>
         <br><br>
         
-        <div id = "studentDataDiv" style="display: none; background-color: aqua; padding: 20px">
+        <div id = "userDataDiv" style="display: none; background-color: aqua; padding: 20px">
             <input id = "name" type = "text" placeholder="Name"/><br><br>
             <input id="idNum" type = "text" placeholder="ID Num"/><br><br>
             <input id = "age" type = "text" placeholder="Age"/><br><br>
@@ -28,9 +37,8 @@
             <button id="showData">Show Data by Name or ID</button>
             <button id="update">Update Existing Student Data</button>
             <button id="delete">Delete Student by ID</button>
-    
         </div>
-
+        
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
@@ -51,7 +59,7 @@
         };
         // Initialize Firebase
         firebase.initializeApp(firebaseConfig);
-        const auth = firebase.auth(); // reference to our auth services that we can use in JS
+        const auth = firebase.auth();
         const db = firebase.firestore();
         </script>
 
@@ -63,7 +71,7 @@
         #formContainer {
         background-color: rgb(217, 245, 255);
         color: rgb(189, 0, 0);
-        padding: 40px;
+        padding-top: 40px; 
         text-align: center;
         }
 
@@ -105,7 +113,14 @@
             border-radius: 5px;
             border-color:rgb(0, 133, 51);
         }
+
         
+        #imglogo{
+            width: 25%;
+            height: 17%;
+            margin-left: auto;
+            margin-right: auto;
+        }
     </style>    
 
 </html>

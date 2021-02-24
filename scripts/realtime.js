@@ -1,7 +1,7 @@
 
 
-function hideShowStudentData(loggedIn) {
-    var x = document.getElementById("studentDataDiv");
+function hideShowUserData(loggedIn) {
+    var x = document.getElementById("userDataDiv");
     if (loggedIn) {
       x.style.display = "block";
     } else {
@@ -23,7 +23,7 @@ document.getElementById('insert').onclick = () => {
   
     // notice similar style of syntax for the object we are adding
     // to the collection. 
-    db.collection('student').add({
+    db.collection('user').add({
         nameOfStudent: nameV,
         idNum: idV,
         age: ageV,
