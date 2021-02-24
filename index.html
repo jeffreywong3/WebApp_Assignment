@@ -15,14 +15,53 @@
             <button onclick="signUp()" id = "signUpButton">Sign Up</button>
             <button onclick="signIn()" id = "signInButton">Sign In</button>
             <button onclick="signOut()" id = "signOutButton">Sign Out</button>
-            
+        </div>
+        <br><br>
+        
+        <div id = "studentDataDiv" style="display: none; background-color: aqua; padding: 20px">
+            <input id = "name" type = "text" placeholder="Name"/><br><br>
+            <input id="idNum" type = "text" placeholder="ID Num"/><br><br>
+            <input id = "age" type = "text" placeholder="Age"/><br><br>
+            <input id="year" type = "text" placeholder="Year in School or Job"/><br><br>
+            <br><br>
+            <button id="insert">Add Student Data</button>
+            <button id="showData">Show Data by Name or ID</button>
+            <button id="update">Update Existing Student Data</button>
+            <button id="delete">Delete Student by ID</button>
+    
         </div>
 
+        <!-- The core Firebase JS SDK is always required and must be listed first -->
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+
+        <!-- TODO: Add SDKs for Firebase products that you want to use
+            https://firebase.google.com/docs/web/setup#available-libraries -->
+
+        <script>
+        // Your web app's Firebase configuration
+        var firebaseConfig = {
+            apiKey: "AIzaSyC0yC0LmhOqeQ5nk8kd6Ztxybek5dBM7Og",
+            authDomain: "bankingapp-8f05c.firebaseapp.com",
+            projectId: "bankingapp-8f05c",
+            storageBucket: "bankingapp-8f05c.appspot.com",
+            messagingSenderId: "10289901252",
+            appId: "1:10289901252:web:c81e31ba2961bbd321e391"
+        };
+        // Initialize Firebase
+        firebase.initializeApp(firebaseConfig);
+        const auth = firebase.auth(); // reference to our auth services that we can use in JS
+        const db = firebase.firestore();
+        </script>
+
+        <script src="scripts/auth.js"></script>
+        <script src="scripts/realtime.js"></script>
     </body>
     
     <style>
         #formContainer {
-        background-color: lightblue;
+        background-color: rgb(217, 245, 255);
         color: rgb(189, 0, 0);
         padding: 40px;
         text-align: center;
@@ -41,6 +80,30 @@
         border-width: 5px;
         border-radius: 10px;
         border-color:#079280;
+        }
+
+        #signUpButton{
+            background-color: rgba(180, 212, 248, 0.952);
+            font-weight: bold;
+            color: #000000;
+            border-radius: 5px;
+            border-color:rgb(0, 133, 51);
+        }
+        #signInButton{
+            background-color: rgba(162, 201, 247, 0.952);
+            font-weight: bold;
+            color: #000000;
+            border-radius: 5px;
+            border-color:#079280;
+            margin-right: 7px;
+            margin-left: 7px;
+        }
+        #signOutButton{
+            background-color: rgba(162, 201, 247, 0.952);
+            font-weight: bold;
+            color: #000000;
+            border-radius: 5px;
+            border-color:rgb(0, 133, 51);
         }
         
     </style>    
