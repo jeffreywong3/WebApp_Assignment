@@ -9,13 +9,12 @@ function hideShowUserData(loggedIn) {
     }
   }
 
-var nameV, idV, ageV, yearV;    // values of the input boxes in the HTML
+var nameV, idV, ageV, moneyV;    // values of the input boxes in the HTML
  
 function ready() {
    nameV = document.getElementById('name').value;
    idV = document.getElementById('idNum').value;
-   ageV = document.getElementById('age').value;
-   yearV = document.getElementById('year').value;
+   moneyV = document.getElementById('money').value;
 }
 
 document.getElementById('insert').onclick = () => {
@@ -24,38 +23,35 @@ document.getElementById('insert').onclick = () => {
     // notice similar style of syntax for the object we are adding
     // to the collection. 
     db.collection('user').add({
-        nameOfStudent: nameV,
+        nameOfUser: nameV,
         idNum: idV,
-        age: ageV,
-        year: yearV
+        money: moneyV
     }).catch(e => console.log(e.message));
  }
 
  document.getElementById('showData').onclick = () => {
   ready();
-  console.log(idV + " " + nameV + " " + ageV + " " + yearV);
+  console.log(idV + " " + nameV  + " " + moneyV);
   db.collection('user').where("idNum", '==', idV).get().then((snapshot) => {
       snapshot.forEach((doc) => {
           console.log(doc.id, " => ", doc.data());
           console.log(doc.data().idNum);
-          document.getElementById('name').value = doc.data().nameOfStudent;
+          document.getElementById('name').value = doc.data().nameOfUser;
           document.getElementById('idNum').value = doc.data().idNum;
-          document.getElementById('age').value = doc.data().age;
-          document.getElementById('year').value = doc.data().year;
+          document.getElementById('money').value = doc.data().money;
       });
   }).catch((e) => {
       console.log("Error getting student by ID number: ", e.message);
   });
 
-  db.collection('user').where("nameOfStudent", '==', nameV).get().then((snapshot) => {
-      //console.log("testing " + snapshot.get(0).id + " " + snapshot.get(0).data().nameOfStudent);
+  db.collection('user').where("nameOfUser", '==', nameV).get().then((snapshot) => {
+      //console.log("testing " + snapshot.get(0).id + " " + snapshot.get(0).data().nameOfUser);
       snapshot.forEach((doc) => {
           console.log(doc.id, " => ", doc.data());
           console.log(doc.data().idNum);
-          document.getElementById('name').value = doc.data().nameOfStudent;
+          document.getElementById('name').value = doc.data().nameOfUser;
           document.getElementById('idNum').value = doc.data().idNum;
-          document.getElementById('age').value = doc.data().age;
-          document.getElementById('year').value = doc.data().year;
+          document.getElementById('money').value = doc.data().money;
       });
   }).catch((e) => {
       console.log("Error getting student by name: ", e.message);
@@ -66,7 +62,7 @@ document.getElementById('insert').onclick = () => {
  
 document.getElementById('update').onclick = () => {
   ready();
-  console.log(idV + " " + nameV + " " + ageV + " " + yearV);
+  console.log(idV + " " + nameV  + " " + moneyV);
   db.collection('user').where("idNum", '==', idV).get().then((snapshot) => {
       snapshot.forEach((doc) => {
           console.log(doc.id, " => ", doc.data());
@@ -75,21 +71,17 @@ document.getElementById('update').onclick = () => {
 
           // if any of these fields are empty, we then keep old value
           if (nameV == undefined) {
-              nameV = doc.data().nameOfStudent;
+              nameV = doc.data().nameOfUser;
           }
-          if (ageV == undefined) {
-              ageV = doc.data().age;
-          }
-          if (yearV == undefined) {
-              yearV = doc.data().year;
+          if (moneyV == undefined) {
+              moneyV = doc.data().money;
           }
 
           // sets new value to this existing student record.  Update will only
           // change the values we ask it to change. 
           db.collection('user').doc(updateID).update({
-              nameOfStudent: nameV,
-              age: ageV,
-              year: yearV
+              nameOfUser: nameV,
+              money: moneyV
           }).then(() => {
               console.log("Updated, new data:");
           }).catch(e => console.log(e.message));
@@ -98,10 +90,9 @@ document.getElementById('update').onclick = () => {
 };
 
 // UPDATE FUNCTIONALITY - ONCLICK
- 
 document.getElementById('update').onclick = () => {
   ready();
-  console.log(idV + " " + nameV + " " + ageV + " " + yearV);
+  console.log(idV + " " + nameV + " " + ageV + " " + moneyV);
   db.collection('user').where("idNum", '==', idV).get().then((snapshot) => {
       snapshot.forEach((doc) => {
           console.log(doc.id, " => ", doc.data());
@@ -110,21 +101,17 @@ document.getElementById('update').onclick = () => {
 
           // if any of these fields are empty, we then keep old value
           if (nameV == undefined) {
-              nameV = doc.data().nameOfStudent;
+              nameV = doc.data().nameOfUser;
           }
-          if (ageV == undefined) {
-              ageV = doc.data().age;
-          }
-          if (yearV == undefined) {
-              yearV = doc.data().year;
+          if (moneyV == undefined) {
+            moneyV = doc.data().money;
           }
 
           // sets new value to this existing student record.  Update will only
           // change the values we ask it to change. 
           db.collection('user').doc(updateID).update({
-              nameOfStudent: nameV,
-              age: ageV,
-              year: yearV
+              nameOfUser: nameV,
+              money: moneyV
           }).then(() => {
               console.log("Updated, new data:");
           }).catch(e => console.log(e.message));
@@ -146,3 +133,62 @@ document.getElementById('delete').onclick = () => {
       });
   });
 }
+
+/*
+Delete Everything: https://kalkus.dev/2019/08/05/how-to-delete-all-documents-from-a-collection-in-google-cloud-firestore/
+*/
+document.getElementById('deleteEverything').onclick = () => {
+    
+      db.collection("user")
+        .get()
+        .then(res => {
+          res.forEach(element => {
+            element.ref.delete();
+          });
+        });
+}
+
+
+/*
+The functions below are to create the table in the app.
+Source: https://www.youtube.com/watch?v=jOau1X5SKDE
+Unfortunately, my monkey brain didn't realize that we haven't
+touched anything on firebase's database (which is what this
+is based on), so this code is USELESS
+Jay's Translation: REEEEEEEEEE
+
+//Getting the Data
+function selectAllData(){
+    firebase.database().ref('user').once('value',
+    function(AllRecords){
+        AllRecords.forEach()(
+            function(CurrentRecord){
+                var name = CurrentRecord.val().nameOfUser;
+                var id = CurrentRecord.val().idNum;
+                var cash = CurrentRecord.val().money;
+                addItemsToTable(name, id, cash);
+            }
+        );
+    });
+}
+window.onload = selectAllData;
+
+//Filling the Table
+var userNo = 0;
+function addItemsToTable(name, id, cash){
+    var tbody = document.getElementById('tbody1');
+    var trow = document.createElement('tr');
+    var td1 = document.createElement('td');
+    var td2 = document.createElement('td');
+    var td3 = document.createElement('td');
+    td1.innerHTML= ++userNo;
+    td2.innerHTML= name;
+    td3.innerHTML= id;
+    td4.innerHTML= cash;
+    trow.appendChild(td1); 
+    trow.appendChild(td2); 
+    trow.appendChild(td3);
+    tbody.appendChild(trow);
+}
+*/
+

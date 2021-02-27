@@ -2,14 +2,15 @@
     
     <head>
         <meta charset="UTF-8">
-        <title> Banking App </title>
+        <title> Checking App </title>
     </head>
 
-    <body style="background-color:powderblue; align-items: center;">
-        <h1 style="color:green;  text-align:center; font-family:verdana;"> Banking App </h1>
-        
-        <!-- 
-        Sources for center/image
+    <body style="background-color:#8CD0DE;">
+        <div id="textContainer">
+            <u><p><span class="outline">Checking App</span></p></u>
+        </div>
+
+        <!-- Sources for center/image
         Center Format: https://www.computerhope.com/issues/ch001613.htm
         Image Video Link: https://m.youtube.com/watch?v=_w6N_nplmAw&feature=youtu.be
         -->
@@ -21,28 +22,59 @@
             <input type = "email" placeholder = "email" id = "email"/>
             <input type = "password" placeholder="password" id = "password" />
             <br><br>
-            <button onclick="signUp()" id = "signUpButton">Sign Up</button>
-            <button onclick="signIn()" id = "signInButton">Sign In</button>
-            <button onclick="signOut()" id = "signOutButton">Sign Out</button>
-        </div>
+            <button onclick="signUp()" id = "logButton">Sign Up</button>
+            <button onclick="signIn()" id = "logButton">Sign In</button>
+            <button onclick="signOut()" id = "logButton">Sign Out</button>
+            </div>
         <br><br>
         
-        <div id = "userDataDiv" style="display: none; background-color: aqua; padding: 20px">
+        <div id = "userDataDiv" >
             <input id = "name" type = "text" placeholder="Name"/><br><br>
             <input id="idNum" type = "text" placeholder="ID Num"/><br><br>
-            <input id = "age" type = "text" placeholder="Age"/><br><br>
-            <input id="year" type = "text" placeholder="Year in School or Job"/><br><br>
+            <input id="money" type = "text" placeholder="Amt of Money"/><br><br>
             <br><br>
-            <button id="insert">Add Student Data</button>
+            <button id="insert">Add User Data</button>
             <button id="showData">Show Data by Name or ID</button>
-            <button id="update">Update Existing Student Data</button>
-            <button id="delete">Delete Student by ID</button>
+            <button id="update">Update Existing User Data</button>
+            <button id="delete">Delete User by ID</button>
+
+            <button id="deleteEverything">Be Evil and Delete Everything</button>
+            
         </div>
+
+        <!-- Tables: https://www.w3schools.com/html/html_tables.asp 
+        <table id = "dataDisplayDiv">
+            <thread>
+                <th>Name</th>
+                <th>ID Number</th>
+                <th>Money</th>
+            </thread>
+
+            <tbody id="tbody1">
+                <tr>
+                    <td> yeet </td>
+                    <td> I hate </td>
+                    <td> my life </td>
+                </tr>
+            </tbody>
+        </table>   
+        -->
+        
+
+        
+        <div class="content">
+            <div id = "userListTitle">
+                <h1 style="color: black; outline-width: 2px; text-align:center; font-family:verdana;"> Users (Name, Id, Money)</h1>
+            </div>
+            <ul id="user-list"> </ul>
+        </div>
+
         
         <!-- The core Firebase JS SDK is always required and must be listed first -->
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-app.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-auth.js"></script>
         <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.2.9/firebase-database.js"></script>
 
         <!-- TODO: Add SDKs for Firebase products that you want to use
             https://firebase.google.com/docs/web/setup#available-libraries -->
@@ -66,17 +98,8 @@
 
                 <script src="scripts/auth.js"></script>
                 <script src="scripts/realtime.js"></script>
-                <script> src="scripts/styles.css"</script>
+                <script src="scripts/app.js"></script>
+                <link href="scripts/styles.css" rel="stylesheet">
     </body>
-    
-    <!-- Not sure why image styling still needs to be on index.html -->
-    <style>
-        #imglogo{
-            width: 25%;
-            height: 17%;
-            margin-left: auto;
-            margin-right: auto;
-        }
-    </style>    
 
 </html>

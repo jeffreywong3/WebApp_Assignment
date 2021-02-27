@@ -1,45 +1,201 @@
-#formContainer {
-    background-color: rgb(217, 245, 255);
-    color: rgb(189, 0, 0);
-    padding-top: 40px; 
+
+    /*
+    Link to how to have styling separately: 
+    https://www.digitalocean.com/community/tutorials/how-to-apply-css-styles-to-html-with-cascade-and-specificity
+    */ 
+
+    /* Top of the page title + logo */
+    #formContainer {
+    background-color: #3DB0C7;
+    padding-top: 30px; 
+    padding-bottom: 30px; 
+    border-radius: 10px;
     text-align: center;
     }
+    #imglogo{
+        width: 200px;
+        height: 130px;
+        margin-left: auto;
+        margin-right: auto;
+    }
+    /*Special Title: https://www.kirupa.com/tricks/text_outline_effect.htm*/
+    #textContainer p {
+        font-family: sans-serif;
+        font-size: 50px;
+        font-weight: 100px;
+        text-align: center;
+        color: #a0e9ee;
+        margin-bottom: 5px;
+    }
+    #textContainer u {
+        font-weight: 100;
+        color: rgb(0, 133, 51);
+    }
+    #textContainer .outline {
+        -webkit-text-stroke-width: 2px;
+        -webkit-text-stroke-color: rgb(0, 133, 51);
+    }   
 
+    /* Input for email+password */
     #email {
-    color: #02574b;
     text-align: center;
     border-width: 5px;
-    border-radius: 10px;
-    border-color:rgb(0, 133, 51);
+    border-radius: 50px;
+    border-color:#a0e9ee;
     }
     #password {
-    color: #02574b;
     text-align: center;
     border-width: 5px;
-    border-radius: 10px;
-    border-color:#079280;
+    border-radius: 50px;
+    border-color:#a0e9ee;
     }
-
-    #signUpButton{
+    /* sign up, sign in, sign out */
+    #logButton{
+        width: 30%;
         background-color: rgba(180, 212, 248, 0.952);
         font-weight: bold;
         color: #000000;
-        border-radius: 5px;
+        border-width: 4px;
+        border-radius: 10px;
         border-color:rgb(0, 133, 51);
     }
-    #signInButton{
-        background-color: rgba(162, 201, 247, 0.952);
-        font-weight: bold;
-        color: #000000;
-        border-radius: 5px;
-        border-color:#079280;
-        margin-right: 7px;
-        margin-left: 7px;
+
+    /* Container for user data */
+    #userDataDiv{
+        display: none;
+        background-color: #3DB0C7; 
+        align-items: center;
+        border-radius: 10px;
+        padding: 20px;
     }
-    #signOutButton{
-        background-color: rgba(162, 201, 247, 0.952);
+    /* Input Containers to add/show/change/delete user data */
+    input[type=text] {
+    width: 30%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    box-sizing: border-box;
+    border-width: 5px;
+    border-radius: 50px;
+    border-color: #a0e9ee;
+    color: black;
+    }
+    /* Buttons to add/show/change/delete user data*/
+    #insert{
+        width: 20%;
+        background-color: rgba(180, 212, 248, 0.952);
         font-weight: bold;
         color: #000000;
-        border-radius: 5px;
+        border-width: 4px;
+        border-radius: 10px;
         border-color:rgb(0, 133, 51);
     }
+    #showData{
+        width: 20%;
+        background-color: rgba(180, 212, 248, 0.952);
+        font-weight: bold;
+        color: #000000;
+        border-width: 4px;
+        border-radius: 10px;
+        border-color:rgb(0, 133, 51);
+    }
+    #update{
+        width: 20%;
+        background-color: rgba(180, 212, 248, 0.952);
+        font-weight: bold;
+        color: #000000;
+        border-width: 4px;
+        border-radius: 10px;
+        border-color:rgb(0, 133, 51);
+    }
+    #delete{
+        width: 20%;
+        background-color: rgba(180, 212, 248, 0.952);
+        font-weight: bold;
+        color: #000000;
+        border-width: 4px;
+        border-radius: 10px;
+        border-color:rgb(0, 133, 51);
+    }
+    #deleteEverything{
+        width: 80%;
+        background-color: rgba(180, 212, 248, 0.952);
+        font-weight: bold;
+        color: #000000;
+        border-width: 4px;
+        border-radius: 10px;
+        border-color:rgb(0, 133, 51);
+        margin-top: 25px;
+    }
+
+    #dataDisplayDiv{
+        display: none;
+        background-color: #3DB0C7; 
+        align-items: center;
+        border-radius: 10px;
+        margin-top: 20px;
+        padding: 20px;
+    }
+
+   
+
+    /* From NetNinja
+    Source: https://github.com/iamshaunjp/firebase-firestore-playlist/blob/lesson-1/styles.css
+    */
+    /* Overall table */
+    .content{
+        background: #3DB0C7;
+        max-width: 960px;
+        margin: 30px auto;
+        padding:  20px 30px;
+        border-radius: 10px 120px 10px 10px;
+        box-shadow: 1px 3px 5px rgba(0,0,0,0.1)
+    }
+    /* Table Blocks displaying firebase user collection*/
+    #userListTitle{
+        height: 50px;
+    }
+    ul{
+        list-style-type: none;
+        padding: 0;
+    }
+    li{
+        padding: 20px;
+        background: rgba(180, 212, 248, 0.952);
+        font-size: 20px;
+        font-weight: bold;
+        color: #000000;
+        position: relative;
+        border-radius: 20px ;
+        border-bottom: 1px solid rgb(0, 133, 51);
+        height: 56px;
+    }
+    li:nth-child(even){
+        padding: 5 px;
+        background: rgba(180, 212, 248, 0.952);
+        border-radius: 20px ;
+        margin-top: 30px ;
+        margin-bottom: 30px ;
+    }
+    li span:nth-child(2){
+        font-size: 16px;
+        font-weight: bolder;
+        text-decoration: underline;
+        text-decoration-style: dashed;
+        margin-top: 6px;
+        margin-bottom: 6px;
+        color: rgb(0, 133, 51);
+    }
+    li span{
+        display: block;
+    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
